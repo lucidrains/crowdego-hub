@@ -1,0 +1,25 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Crowdego Hub</title>
+    <script src="{% static 'dist/main.js' %}" defer></script>
+  </head>
+  <body>
+    <main>
+      <h1>Hello, world!</h1>
+      <p>Welcome to Crowdego Hub. Served by Django.</p>
+      <section aria-labelledby="vue-heading">
+        <h2 id="vue-heading">Vue</h2>
+        <div id="vue-app"></div>
+      </section>
+      <section aria-labelledby="htmx-heading">
+        <h2 id="htmx-heading">HTMX</h2>
+        <button type="button" hx-get="{% url 'greeting' %}" hx-target="#greeting" hx-swap="innerHTML">Say hello from Django</button>
+        <div id="greeting" aria-live="polite"></div>
+      </section>
+    </main>
+  </body>
+</html>

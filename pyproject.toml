@@ -1,0 +1,31 @@
+[project]
+name = "crowdego-hub"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "django>=6.1.1",
+    "psycopg[binary]>=3.3.5",
+]
+
+[tool.uv]
+package = false
+
+[tool.ruff]
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+
+[tool.mypy]
+plugins = ["mypy_django_plugin.main"]
+exclude = ['^\.venv/', '^mobile/']
+
+[tool.django-stubs]
+django_settings_module = "config.settings"
+
+[dependency-groups]
+dev = [
+    "django-stubs>=6.1.1",
+    "mypy>=2.3.1",
+    "ruff>=0.16.8",
+]

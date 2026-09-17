@@ -1,0 +1,19 @@
+{
+  "name": "crowdego-hub",
+  "private": true,
+  "type": "module",
+  "packageManager": "bun@1.4.0",
+  "scripts": {
+    "build": "esbuild frontend/main.js --bundle --minify --target=es6 --outfile=static/dist/main.js",
+    "dev": "bun run build --watch",
+    "lint": "biome check frontend"
+  },
+  "dependencies": {
+    "htmx.org": "^2.0.10",
+    "vue": "^3.5.42"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.14",
+    "esbuild": "^0.28.2"
+  }
+}
