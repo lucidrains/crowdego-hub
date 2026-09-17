@@ -9,11 +9,12 @@ avd-name := env_var_or_default("AVD_NAME", "crowdego")
 default:
     @just --list
 
-[doc('Install Python, JS, and Flutter dependencies')]
+[doc('Install Python, JS, Flutter, and Nim dependencies')]
 setup:
     uv sync
     bun install
     just mobile-setup
+    just nim-setup
 
 [doc('Start the PostgreSQL container')]
 [group('database')]
@@ -90,6 +91,16 @@ typecheck:
 [doc('Run lint, typecheck, and tests')]
 [group('web')]
 check: lint typecheck test
+
+[doc('Install the Nim compiler needed to build the .nim extension')]
+[group('nim')]
+nim-setup:
+    ./scripts/install-nim.sh
+
+[doc('Compile and run the Nim extension through Django')]
+[group('nim')]
+nim-check:
+    uv run python manage.py nim_check
 
 [doc('Fetch Flutter packages')]
 [group('mobile')]

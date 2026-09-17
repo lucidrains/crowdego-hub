@@ -1,0 +1,3 @@
+from collections.abc import Sequence
+
+def path_length(points: Sequence[Sequence[float]]) -> float: ...
